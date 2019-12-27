@@ -11,6 +11,9 @@ RUN chmod +x /opt/install/dccy/node.js
 COPY ./enable_history.js /opt/install/dccy/
 RUN sed -ie 's/fibos.start()/require(".\/enable_history")(fibos)/g' /opt/install/dccy/node.js
 
+# cleanup
+RUN rm -rf /var/lib/apt/lists/* /opt/install/installer-sakra.sh /opt/install/doc/ /opt/install/start.gif
+
 
 WORKDIR /opt/install/dccy
 ENTRYPOINT /opt/install/dccy/node.js
